@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Demandes d'essai BYD | CFAO Mobility</title>
+<link rel="icon" href="assets/logo-cfao.png">
+<link rel="stylesheet" href="assets/essais.css?v=2">
+</head>
+<body>
+<div class="fictif">Démonstration : toutes les demandes, les clients et les chiffres sont fictifs.</div>
+
+<!-- Connexion -->
+<main id="login" class="login">
+  <div class="lg-card">
+    <div class="lg-logos"><img src="assets/logo-cfao.png" alt="CFAO Mobility" class="lg-cfao"><span class="lg-sep"></span><img src="assets/logo-byd.png" alt="BYD" class="lg-byd"></div>
+    <h1>Demandes d'essai BYD</h1>
+    <p class="lg-sub">Espace réservé aux équipes commerciales de CFAO Mobility Côte d'Ivoire.</p>
+    <form id="lgf" autocomplete="off">
+      <label for="u">Identifiant</label>
+      <input id="u" name="u" autocomplete="username" required autocapitalize="none" spellcheck="false">
+      <label for="p">Mot de passe</label>
+      <div class="pw"><input id="p" name="p" type="password" autocomplete="current-password" required><button type="button" id="eye" aria-label="Afficher le mot de passe">Afficher</button></div>
+      <button class="btn" id="go" type="submit">Se connecter</button>
+      <p id="err" class="err" role="alert"></p>
+    </form>
+    <p class="lg-foot">Les données sont chiffrées : sans identifiant valide, elles ne peuvent pas être lues.</p>
+  </div>
+</main>
+
+<!-- Tableau -->
+<div id="app" hidden>
+  <header class="top"><div class="wrap top-in">
+    <img src="assets/logo-cfao.png" alt="CFAO Mobility" class="logo">
+    <div class="titre"><h1>Demandes d'essai BYD</h1><p id="maj"></p></div>
+    <img src="assets/logo-byd.png" alt="BYD" class="logo-byd">
+    <div class="who"><span id="who"></span><button class="btn ghost sm" id="out">Se déconnecter</button></div>
+  </div></header>
+
+  <div class="wrap">
+    <section class="filtres">
+      <div class="seg" id="per">
+        <button data-p="7">7 jours</button><button data-p="30" class="on">30 jours</button><button data-p="all">Depuis le lancement</button>
+      </div>
+      <select id="fsr" aria-label="Showroom"></select>
+      <select id="fmod" aria-label="Modèle"></select>
+      <select id="fsrc" aria-label="Source"></select>
+      <button class="btn ghost sm" id="csv">Exporter en CSV</button>
+    </section>
+
+    <section class="kpis" id="kpis"></section>
+
+    <section class="grid2">
+      <div class="card">
+        <div class="card-h"><h2>À traiter maintenant</h2><span class="note">Classé par urgence</span></div>
+        <div id="todo" class="todo"></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h2>Du formulaire à la commande</h2><span class="note">Sur la période</span></div>
+        <div id="funnel" class="funnel"></div>
+      </div>
+    </section>
+
+    <section class="grid2">
+      <div class="card">
+        <div class="card-h"><h2>Demandes par semaine et par source</h2></div>
+        <div class="chart"><canvas id="cSem"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h2>Essais des 7 prochains jours</h2><span class="note" id="nbav"></span></div>
+        <div id="agenda" class="agenda"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-h"><h2>Par showroom et par conseiller</h2><span class="note">Délai en orange : au-delà de 30 min</span></div>
+      <div class="tw"><table id="tCons"></table></div>
+    </section>
+
+    <section class="grid2">
+      <div class="card">
+        <div class="card-h"><h2>Par modèle</h2></div>
+        <div class="chart sm"><canvas id="cMod"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h2>Pourquoi on perd</h2><span class="note">Absences, annulations et offres perdues</span></div>
+        <div id="motifs" class="bars"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-h"><h2>Toutes les demandes</h2>
+        <div class="seg sm" id="fst"></div>
+        <input id="q" type="search" placeholder="Rechercher un client, une référence…" aria-label="Rechercher">
+      </div>
+      <div class="tw"><table id="tAll"></table></div>
+      <p class="note" id="nbAll"></p>
+    </section>
+
+    <p class="src">Source : formulaire « Réserver un essai » du site BYD Côte d'Ivoire et suivi des conseillers. Délai de confirmation = temps entre la demande et le message WhatsApp du conseiller. Taux de présence = essais réalisés sur essais prévus passés. Données fictives de démonstration.</p>
+  </div>
+</div>
+
+<!-- Détail -->
+<aside id="drw" class="drw" hidden><div class="drw-in" role="dialog" aria-modal="true" aria-labelledby="dT">
+  <button class="x" id="dx" aria-label="Fermer">×</button>
+  <div id="dBody"></div>
+</div></aside>
+
+<script src="assets/coffre.js?v=2"></script>
+<script src="assets/chart.umd.min.js"></script>
+<script src="assets/essais.js?v=2"></script>
+</body>
+</html>
